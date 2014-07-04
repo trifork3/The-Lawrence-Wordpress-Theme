@@ -28,6 +28,7 @@
     
   <?php endwhile; ?>
    
+<div class="featured-border-divider"></div>
 <!-- --------------------------------------------------------------------------------- --> 
    
 <div class="featured-section-news-wrapper">
@@ -60,7 +61,7 @@
         </div>
         </div>
 
-   
+<div class="featured-border-bottom"></div>
 <!-- --------------------------------------------------------------------------------- --> 
 
 
@@ -75,7 +76,7 @@
 
 <div class="featured-section-editorial-wrapper">
 
-<div class="featured-section-header" id="featured-section-header-editorial"><a href="section/editorial"><a>Editorial • By <?php echo $authorname;?> →</a></div>
+<div class="featured-section-header" id="featured-section-header-editorial"><a href="section/editorial"><a>Editorial • By <?php echo $authorname;?></a></div>
 <div class="featured-section">
 <?php $my_query = new WP_Query('category_name=editorial&posts_per_page=1');
   while ($my_query->have_posts()) : $my_query->the_post();
@@ -236,12 +237,10 @@
         
 <!-- --------------------------------------------------------------------------------- --> 
 
-
-
+<body onmouseover="adjustdivheight()">
 
 <?php get_template_part( 'nav', 'below' ); ?>
 </section>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
 
-<!-- <?php get_template_part( 'entry-excerpt' ); ?> substituted in line 10 -->

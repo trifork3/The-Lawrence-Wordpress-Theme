@@ -1,8 +1,10 @@
-function theFunction(){
-	if(jQuery(window).scrollTop() == 0){
-	jQuery('.logo').css('padding-top', '100px');
-	}
-	else{
-	jQuery('.header').css('box-shadow', '0px 0px 0px #888');
-	}
+function resize_divProgress() {
+    var control = document.getElementById('featured-post');
+    var control2 = document.getElementById('featured-section-news-wrapper');
+    var div = document.getElementById('featuredborder');
+
+    div.style.left = control.offsetLeft + 'px';
+    div.style.top = control.offsetTop + 'px';
+    div.style.width = control.offsetWidth + 'px';
+    div.style.height = control.offsetHeight + 'px';
 }
