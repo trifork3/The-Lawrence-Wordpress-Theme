@@ -9,8 +9,16 @@
  <div class="title-img-wrapper">
     	<div class="category-post-title"> <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></div>
     	
-        <?php get_template_part( 'entry-first-img' ); ?>
-
+    	<div class="category-img">
+    		<?php if ( get_the_post_thumbnail($post_id) != '' ) {
+			echo  the_post_thumbnail();
+			}	 
+			else {;
+ 			echo '<img src="';
+ 			echo catch_that_image();
+ 			echo '" alt="" />';
+			}?> 
+		</div>
 		</div>
     	<div class="category-post-content"> 
     	<?php excerpt_length(300); ?>
@@ -21,7 +29,8 @@
 
 <?php endwhile; endif; ?>
 
-
-<?php get_template_part( 'nav', 'below' ); ?> 
+<?php get_template_part( 'nav', 'below' ); ?>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
+
+   

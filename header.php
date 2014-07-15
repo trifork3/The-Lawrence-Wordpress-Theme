@@ -10,30 +10,36 @@
 <body <?php body_class(); ?>>
 <div id="entire-window-wrapper" class="hfeed">
 
+<div id="header-wrapper">
 <div id="header" >
 
+
+<div id="menu-pages-container-desktop">
+<?php wp_nav_menu( array( 'theme_location' => 'extra-menu', ) );?>
+
+</div>
+
 <div id="logo">
-	<div onclick="toggleMenu()" 
- class="hamburger-icon">
-	<p >☰</>
+	<div onclick="toggleMenu()" class="hamburger-icon">
+	<p>☰</p>
 	</div>
-    <a href="<?php echo get_option('home'); ?>/"><img src="https://www.dropbox.com/s/hb05aed512eloe9/lawrence%20white.svg?dl=1"" title="" /></a>
+    <a href="<?php echo get_option('home'); ?>/"><img src="http://localhost:8888/wordpress/wp-content/uploads/2014/07/the-lawrence-logo-white-compressed.png" title="" /></a>
+	
 </div>
 
 
-<div id="menu" role="navigation">
-	<!-- <div id="search">
-		<?php get_search_form(); ?>
-	</div> -->
+	<div id="logo-desktop">
+    	<a href="<?php echo get_option('home'); ?>/"><img src="http://localhost:8888/wordpress/wp-content/uploads/2014/07/the-lawrence-logo-black-compressed.png" title="" /></a>
+	</div>
 
-	  <?php $defaults = array(
+<div id="category-menu" role="navigation" >
+
+	<?php $defaults = array(
     'theme_location'  => '',
     'menu'            => 'TopMenu', 
     'container'       => 'ul', 
     'container_class' => '', 
-    'container_id'    => 'category-menu',
-    'menu_class'      => 'category-menu', 
-    'menu_id'         => 'category-menu',
+    'container_id'    => 'category-menu-list',
     'echo'            => true,
     'fallback_cb'     => 'wp_page_menu',
     'before'          => '',
@@ -43,23 +49,23 @@
     'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',
     'depth'           => 0,
     'walker'          => ''
-); ?>
-<?php wp_nav_menu( $defaults ); ?>  
+	); ?>
+	<?php wp_nav_menu( $defaults ); ?>  
+	
 </div>
+	
 
+<div id="menu-pages-container-mobile">
+	<?php wp_nav_menu( array( 'theme_location' => 'extra-menu', ) );?>
+</div>
 <script type="text/javascript" src="wordpress/javascript/mobile_nav_menu.js"></script>
 
-<script type="text/javascript" src="http://localhost:8888/wordpress/javascript/header_shadow.js"></script>
+<script type="text/javascript" src="wordpress/javascript/header_shadow.js"></script>
 
-<script> function theFunction(){
-	if(jQuery(window).scrollTop() == 0){
-	jQuery('.logo').css('padding-top', '100px');
-	}
-	else{
-	jQuery('.header').css('box-shadow', '0px 0px 0px #888');
-	}
-</script>
 </div>
-<div id="header-wrapper"></div>
-<!-- <div id="content-container"> -->
-<!-- Moved to entry.php-->
+</div>
+<!--
+	<div id="search">
+		<?php get_search_form(); ?> 
+	</div> -->
+

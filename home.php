@@ -1,34 +1,18 @@
 <?php get_header(); ?> 
-
+<section class="article-list-wrap" role="main">
 <?php $my_query = new WP_Query('category_name=featured&posts_per_page=1');
   while ($my_query->have_posts()) : $my_query->the_post();
   $do_not_duplicate = $post->ID;?>
     <!-- Do stuff... -->
      <div class="featured-post">
+        <?php get_template_part( 'entry-first-img' ); ?>
     	<?php get_template_part( 'entry-excerpt' ); ?>
-    	
-    	<div class="featured-post-content"> 
-    	
-    	<div id="featured-img">
-    		<?php if ( get_the_post_thumbnail($post_id) != '' ) {
-			echo '<a href="'; the_permalink(); echo '" >'; the_post_thumbnail();
-			}	 
-			else {
-	 		echo '<a href="'; the_permalink(); echo '" class="">';
- 			echo '<img src="';
- 			echo catch_that_image();
- 			echo '" alt="" />';
-			}?> 
-		</div>
-			<?php print_excerpt(200);?>
-
-    </div>
+    	<p><?php excerpt_length(200); ?></p>
     </div>
     
     
   <?php endwhile; ?>
    
-<div class="featured-border-divider"></div>
 <!-- --------------------------------------------------------------------------------- --> 
    
 <div class="featured-section-news-wrapper">
@@ -39,29 +23,22 @@
   while ($my_query->have_posts()) : $my_query->the_post();
     if( $post->ID == $do_not_duplicate ) continue;?>
     <!-- Do stuff... -->
-     
-    	<?php get_template_part( 'entry-excerpt' ); ?>
+         <div class="featured-post-content"> 
+		<div class="category-flex-wrap">
+    	<?php get_template_part( 'entry-title' ); ?>
     	
-    	<div class="featured-post-content"> 
-    	
-    	<div id="featured-img">
-    		<?php if ( get_the_post_thumbnail($post_id) != '' ) {
-			echo '<a href="'; the_permalink(); echo '" >'; the_post_thumbnail();
-			}	 
-			else {
-	 		echo '<a href="'; the_permalink(); echo '" class="">';
- 			echo '<img src="';
- 			echo catch_that_image();
- 			echo '" alt="" />';
-			}?> 
+    	<?php get_template_part( 'entry-first-img' ); ?>
 		</div>
+    
+		
+		<?php get_template_part( 'entry-meta' ); ?>
+
     </div>    
     
   <?php endwhile; ?>    
         </div>
         </div>
 
-<div class="featured-border-bottom"></div>
 <!-- --------------------------------------------------------------------------------- --> 
 
 
@@ -89,17 +66,8 @@
     	
     	<div class="featured-post-content"> 
     	
-    	<div id="featured-img">
-    		<?php if ( get_the_post_thumbnail($post_id) != '' ) {
-			echo '<a href="'; the_permalink(); echo '" >'; the_post_thumbnail();
-			}	 
-			else {
-	 		echo '<a href="'; the_permalink(); echo '" class="">';
- 			echo '<img src="';
- 			echo catch_that_image();
- 			echo '" alt="" />';
-			}?> 
-		</div>
+    	<?php get_template_part( 'entry-first-img' ); ?>
+
     </div>    
     
   <?php endwhile; ?>    
@@ -123,17 +91,8 @@
     	
     	<div class="featured-post-content"> 
     	
-    	<div id="featured-img">
-    		<?php if ( get_the_post_thumbnail($post_id) != '' ) {
-			echo '<a href="'; the_permalink(); echo '" >'; the_post_thumbnail();
-			}	 
-			else {
-	 		echo '<a href="'; the_permalink(); echo '" class="">';
- 			echo '<img src="';
- 			echo catch_that_image();
- 			echo '" alt="" />';
-			}?> 
-		</div>
+    	        	<?php get_template_part( 'entry-first-img' ); ?>
+
     </div>    
     
   <?php endwhile; ?>    
@@ -156,17 +115,8 @@
     	
     	<div class="featured-post-content"> 
     	
-    	<div id="featured-img">
-    		<?php if ( get_the_post_thumbnail($post_id) != '' ) {
-			echo '<a href="'; the_permalink(); echo '" >'; the_post_thumbnail();
-			}	 
-			else {
-	 		echo '<a href="'; the_permalink(); echo '" class="">';
- 			echo '<img src="';
- 			echo catch_that_image();
- 			echo '" alt="" />';
-			}?> 
-		</div>
+            	<?php get_template_part( 'entry-first-img' ); ?>
+
     </div>    
     
   <?php endwhile; ?>    
@@ -187,17 +137,8 @@
     	
     	<div class="featured-post-content"> 
     	
-    	<div id="featured-img">
-    		<?php if ( get_the_post_thumbnail($post_id) != '' ) {
-			echo '<a href="'; the_permalink(); echo '" >'; the_post_thumbnail();
-			}	 
-			else {
-	 		echo '<a href="'; the_permalink(); echo '" class="">';
- 			echo '<img src="';
- 			echo catch_that_image();
- 			echo '" alt="" />';
-			}?> 
-		</div>
+            	<?php get_template_part( 'entry-first-img' ); ?>
+
     </div>    
     
   <?php endwhile; ?>    
@@ -217,18 +158,8 @@
     	<?php get_template_part( 'entry-excerpt' ); ?>
     	
     	<div class="featured-post-content"> 
-    	
-    	<div id="featured-img">
-    		<?php if ( get_the_post_thumbnail($post_id) != '' ) {
-			echo '<a href="'; the_permalink(); echo '" >'; the_post_thumbnail();
-			}	 
-			else {
-	 		echo '<a href="'; the_permalink(); echo '" class="">';
- 			echo '<img src="';
- 			echo catch_that_image();
- 			echo '" alt="" />';
-			}?> 
-		</div>
+    	        	<?php get_template_part( 'entry-first-img' ); ?>
+
     </div>    
     
   <?php endwhile; ?>    
@@ -239,7 +170,6 @@
 
 <body onmouseover="adjustdivheight()">
 
-<?php get_template_part( 'nav', 'below' ); ?>
 </section>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

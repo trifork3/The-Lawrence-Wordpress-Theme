@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<!--<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>> -->
 	
  <section class="featured-title"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></section>
 
@@ -9,8 +9,4 @@
 
  <!-- Display the Post's content in a div box. -->
 
-
-
-
-  
-</article>
+<!--</article>-->

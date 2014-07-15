@@ -1,5 +1,6 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 <div id="content-container">
+<div class="post-category"><?php _e( '', 'blankslate' ); ?><?php the_category( ', ' ); ?></div>
 
 <header>
 

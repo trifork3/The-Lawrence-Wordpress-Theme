@@ -1,16 +1,15 @@
 function toggleMenu() {
-   if( document.getElementById("category-menu").style.display != "block"){
-    document.getElementById("category-menu").style.display = "block";
-    document.getElementById("menu").style.borderBottom =("thick double #368f86");
-	document.getElementById("overlay").style.opacity =("0.6");
-	document.getElementById("overlay").style.zIndex =("150");
-	document.getElementById("overlay").style.display =("block");
-	document.getElementById("overlay").style.backgroundColor =("black");
-	document.getElementById("overlay").style.position =("fixed");
+   if( document.getElementById("menu-sections").style.display != "block"){
+    document.getElementById("menu-sections").style.display = ("block");
+    document.getElementById("category-menu").style.borderBottom =("thin solid #e2e2e2");
+	document.getElementById("menu-pages-container-mobile").style.display =("block");
+	document.getElementById("header").style["box-shadow"]=( "0px 4px 10px 0px rgba(50, 50, 50, 0.75)");
 	}
 	else{
-	document.getElementById("category-menu").style.display = "none";
-    document.getElementById("menu").style.borderBottom =("");
+	document.getElementById("menu-sections").style.display = "none";
+    document.getElementById("category-menu").style.borderBottom =("");
+    document.getElementById("header").style["box-shadow"]=("");
+    document.getElementById("menu-pages-container-mobile").style.display =("none");
 	}
 }
 
