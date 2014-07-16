@@ -302,7 +302,6 @@ img{
 
 .featured-post p{
 	padding-bottom: 1em;
-
 	font-family: avenir next;
 	font-weight: normal;
 	font-size: 100%;
@@ -425,6 +424,19 @@ img{
 	font-size: 85%;
 }
 
+.featured-section-editorial-wrapper .featured-section .featured-post-content {
+	position: relative;
+	top: -9999px;
+	left: -9999px;
+	height: 0;
+}
+
+.featured-section-editorial-wrapper #featured-section-header-editorial-short{
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	height: 0;
+}
 
 #featured-section-header-news a{
 	display:block;
@@ -475,6 +487,30 @@ img{
 	width: 100px!important;
 }
 
+.post-title-large-screen{
+	position: relative;
+	top: -9999px;
+	left:-9999px;
+	height: 0;
+
+	/* Article Headlines are displayed as list for larger display, but 
+	for mobile, they are not a list, so this hides the list for mobile. 
+	Kind of a hack*/
+}
+
+
+	.featured-section-opinions-wrapper .post-label{
+		color: #368f86;
+		position: relative;
+		top: 0.4rem;
+	}
+
+	.featured-post-content p{
+		position: relative;
+	top: -9999px;
+	left:-9999px;
+	height: 0;
+	}
 
 
 
@@ -569,11 +605,6 @@ img{
    /*Hide the author name and date published in the featured post*/
 }
 
-.title-img-wrapper{
-	display: flex;
-}
-
-
 /* div p:nth-of-type(2):first-letter{
 	font-weight: bold;
 	font-size: 2.75em;
@@ -612,6 +643,7 @@ p{font-family: avenir next;}
 
 	.article-list-wrap{
 		width: 90%;
+		max-width: 690px;
 		margin: auto;
 		padding-top: 1rem;
 	}
@@ -659,6 +691,10 @@ p{font-family: avenir next;}
 		font-size: 120%;
 		line-height: 110%;
 		font-weight: 400;
+		position: relative;
+		top: 0;
+		left: 0;
+		height: auto;
 		width: auto;
 	}
 	.featured-post .featured-title {
@@ -679,6 +715,10 @@ p{font-family: avenir next;}
 	    because browser resizing is a little funky sometimes*/
 	}
 
+	.featured-post-content .featured-img{
+		flex-shrink: 1;
+
+	}
 
 	.featured-post .entry-meta{
 		position:relative;
@@ -707,20 +747,36 @@ p{font-family: avenir next;}
 
 	.featured-section-header{
 		margin-left: none;
+		border: none;
 	}
 
 
 	.featured-section-header {
 		padding-left: 0;
 		background-color:white;
+
+
+	}
+
+	.featured-section-header a{
+		color: #8f363f;
+		text-transform: uppercase;
 	}
 
 	.featured-section{
 		margin-left: 0;
+		width: 100%;
+	}
+
+	.featured-section .featured-post-content{
+		padding-bottom: 0.5rem;
 	}
 
 	.featured-section .featured-title{
 		border-bottom: none;
+		padding-bottom: 0;
+		padding-top: 0.1rem;
+		font-weight:600;
 	}
 
 
@@ -740,6 +796,8 @@ p{font-family: avenir next;}
 		background-color: white;
 		border: none;         
 		text-transform: uppercase;
+		font-weight: 500;
+		font-size: 0.9rem;
 	}
 
 
@@ -755,7 +813,7 @@ p{font-family: avenir next;}
 
 	#featured-section-news .featured-title{
 		font-size: 1rem;
-		line-height: 1.5rem;
+		line-height: 1.2rem;
 	}
 
 	#featured-section-news article{
@@ -767,8 +825,6 @@ p{font-family: avenir next;}
 	#featured-section-news  {
 		font-size: 100%;
 		text-align: left;
-		z-index: 0;
-		
 	}
 
 	.featured-section-news-wrapper  {
@@ -779,7 +835,7 @@ p{font-family: avenir next;}
 		float:right;
 		display: inline-block;
 		position: relative;
-		border-left: 1px solid #e2e2e2;
+		/*border-left: 1px solid #e2e2e2;*/
 
 	}
 
@@ -787,8 +843,39 @@ p{font-family: avenir next;}
 		position: relative;
 		top: 0;
 		left: 0;
-		width: 20%;
+		width: 35%;
+		padding-left: 5%;
+		height: auto;
 		float: right;
+		display: inline-block;
+	}
+
+	.bottom-border{
+		clear: both;
+		width: 100%;
+		position: relative;
+		top: 5px;
+		margin-bottom: 1rem;
+		margin-top: 0.5rem;
+		height: 0.1rem;
+		border-top: 1px solid #e2e2e2;;
+		border-bottom: 1px solid #e2e2e2;;
+
+	}
+
+	.bottom-border-half-width{
+		clear: both;
+		width: 48%;
+		float: left;
+		display: inline;
+		position: relative;
+		top: 5px;
+		margin-bottom: 1rem;
+		margin-top: 0.5rem;
+		height: 0.1rem;
+		border-top: 1px solid #e2e2e2;;
+		border-bottom: 1px solid #e2e2e2;;
+
 	}
 
 	.featured-section-news-wrapper #featured-section-header-news{
@@ -798,20 +885,65 @@ p{font-family: avenir next;}
 	.featured-section-news-wrapper .featured-section .featured-title{
 		margin-left: 0;
 		font-weight: 600;
-		width: 80%;
-		float: left;
-	}
+		}
 
 	.featured-section-editorial-wrapper{
-		width:35%;
-		float:right;
-		margin-right: 5%;
+		padding-bottom: 0;
+		width:48%;
+		padding-right: 2%;
+		margin-left: -5px;
+		float: left;
+		padding-top: 0em;
+		display: inline-block;
+		/*border-right: 1px solid #e2e2e2;*/
+		position: relative;
+		left: 5px;
+
 	}
 
 	#featured-section-header-editorial{
-		background-color: white;
-		margin-top: 0;
+		position: relative;
+		top: -9999px;
+		left: -9999px;
 		border-top: none;
+		border-bottom: none;
+		padding: 0;
+		height: 0;
+	}
+
+	.featured-section-editorial-wrapper #featured-section-header-editorial-short{
+		position: relative;
+		top: 0;
+		left: 0;
+		height: auto;
+	}
+
+	.featured-section-editorial-wrapper .featured-section-header {
+		border-top: none;
+		border-bottom: none;
+		font-weight: 500;
+		font-size: 0.9rem;
+		padding-bottom: 0rem;
+		height: auto;
+		color: #8f363f;
+	}
+
+
+	.featured-section-editorial-wrapper .featured-section-header a{
+		color: #8f363f;
+	}
+
+	.featured-section-editorial-wrapper .featured-section .featured-post-content {
+	
+		top: 0;
+		left: 0;
+		height: auto;
+	}
+
+	.featured-section-editorial-wrapper .featured-section .featured-title{
+		font-size: 1.3rem;
+		line-height: 1.5rem;
+		font-weight: 500;
 	}
 
 
@@ -835,16 +967,35 @@ p{font-family: avenir next;}
 
 
 	.featured-section-opinions-wrapper{
-		width:40%;
-		border-right: thin solid #e2e2e2;
-		display: inline;
+		padding-bottom: 0;
+		width:48%;
+		padding-left: 2%;
+		border-left: 1px solid #e2e2e2;
+		float: right;
+		padding-top: 0em;
+		display: inline-block;
+		position: relative;
 	}
 
 
+	.featured-section-opinions-wrapper .featured-section-header{
+		border: none;
+	}
+
+
+
+
 	.featured-section-arts-wrapper{
-		width:40%;
-		float:right;
-		overflow: hidden;
+	padding-bottom: 0;
+	width: 48%;
+	padding-right: 2%;
+	margin-left: -5px;
+	float: left;
+	padding-top: 0em;
+	display: inline-block;
+	/* border-right: 1px solid #e2e2e2; */
+	position: relative;
+left: 5px;
 
 	}
 
@@ -861,14 +1012,56 @@ p{font-family: avenir next;}
 	}
 
 	.featured-section-sports-wrapper{
-		width:40%;
-		float:right;
-		overflow: hidden;
+		padding-bottom: 0;
+		width: 48%;
+		padding-left: 2%;
+		border-left: 1px solid #e2e2e2;
+		float: right;
+		padding-top: 0em;
+		display: inline-block;
+		position: relative;
+	}
+
+	#featured-section-sports .featured-img{
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+		height:0;
 	}
 
 	.featured-section-features-wrapper{
-		width:40%;
-		float:left;
+		padding-bottom: 0;
+		width: 48%;
+		padding-right: 2%;
+		margin-left: -5px;
+		float: left;
+		padding-top: 0em;
+		display: inline-block;
+		/* border-right: 1px solid #e2e2e2; */
+		position: relative;
+		left: 5px;
+	}
+
+	.featured-section .featured-post-content-mobile{
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+		height: 0;
+	}
+
+	.post-title-large-screen{
+		position: relative;
+		top: 0;
+		left: 0;
+		height: auto;
+
+		/* Article Headlines are displayed as list for larger display, but 
+		for mobile, they are not a list, so this hides the list for mobile. 
+		Kind of a hack*/
+	}
+
+	.featured-section-opinions-wrapper .post-label{
+		top: 0;
 	}
 
 
@@ -1038,6 +1231,14 @@ p{font-family: avenir next;}
 	.featured-post-content{
 		width:auto;
 		padding-bottom: 1em;
+
+	}
+
+	.featured-post-content p{
+	position: relative;
+	top: 0;
+	left:0;
+	height: auto;
 	}
 
 	.featured-title {

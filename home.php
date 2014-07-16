@@ -1,3 +1,4 @@
+
 <?php get_header(); ?> 
 <section class="article-list-wrap" role="main">
 <?php $my_query = new WP_Query('category_name=featured&posts_per_page=1');
@@ -24,11 +25,10 @@
     if( $post->ID == $do_not_duplicate ) continue;?>
     <!-- Do stuff... -->
          <div class="featured-post-content"> 
-		<div class="category-flex-wrap">
+		<!--<div class="category-flex-wrap"> -->
     	<?php get_template_part( 'entry-title' ); ?>
     	
-    	<?php get_template_part( 'entry-first-img' ); ?>
-		</div>
+		<!-- </div> -->
     
 		
 		<?php get_template_part( 'entry-meta' ); ?>
@@ -38,7 +38,7 @@
   <?php endwhile; ?>    
         </div>
         </div>
-
+<div class="bottom-border"> </div>
 <!-- --------------------------------------------------------------------------------- --> 
 
 
@@ -54,6 +54,8 @@
 <div class="featured-section-editorial-wrapper">
 
 <div class="featured-section-header" id="featured-section-header-editorial"><a href="section/editorial"><a>Editorial • By <?php echo $authorname;?></a></div>
+<div class="featured-section-header" id="featured-section-header-editorial-short"><a href="section/editorial">EDITORIAL</a></div>
+
 <div class="featured-section">
 <?php $my_query = new WP_Query('category_name=editorial&posts_per_page=1');
   while ($my_query->have_posts()) : $my_query->the_post();
@@ -63,18 +65,20 @@
 			
 		
     	<?php get_template_part( 'entry-excerpt' ); ?>
-    	
+
     	<div class="featured-post-content"> 
-    	
+    	<p><?php excerpt_length(400); ?></p>
+
     	<?php get_template_part( 'entry-first-img' ); ?>
 
     </div>    
     
   <?php endwhile; ?>    
         </div>
+        <div class="bottom-border"></div>
 		</div>
 
-        
+
         
         
 <!-- --------------------------------------------------------------------------------- --> 
@@ -82,26 +86,67 @@
 <div class="featured-section-opinions-wrapper">
 <div class="featured-section-header" id="featured-section-header-opinions"><a href="section/opinions">Opinions</a></div>
 <div class="featured-section" id="featured-section-opinions">
+
+
+<?php $my_query = new WP_Query('category_name=jimposium&posts_per_page=1');
+  while ($my_query->have_posts()) : $my_query->the_post();
+  $do_not_duplicate = $post->ID;?>
+    <!-- Do stuff... -->
+    <div class="post-label">JIMPOSIUM</div>
+     <div class="featured-post-content">
+        <?php get_template_part( 'entry-first-img' ); ?>
+    	<?php get_template_part( 'entry-title' ); ?>
+    	<?php get_template_part( 'entry-meta');?>
+    	<p><?php excerpt_length(200); ?></p>
+    </div>
+    
+    
+  <?php endwhile; ?>
+
+
+
+<?php $my_query = new WP_Query('category_name=speaker-of-the-house&posts_per_page=1');
+  while ($my_query->have_posts()) : $my_query->the_post();
+  $do_not_duplicate_speaker_of_the_house = $post->ID;?>
+    <!-- Do stuff... -->
+    <div class="post-label">SPEAKER OF THE HOUSE</div>
+
+     <div class="featured-post-content">
+        <?php get_template_part( 'entry-first-img' ); ?>
+    	<?php get_template_part( 'entry-excerpt' ); ?>
+    	<p><?php excerpt_length(200); ?></p>
+    </div>
+    
+    
+  <?php endwhile; ?>
+
+
+
 <?php $my_query = new WP_Query('category_name=opinions&posts_per_page=5');
   while ($my_query->have_posts()) : $my_query->the_post();
-  if( $post->ID == $do_not_duplicate ) continue;?>
+  if( $post->ID == $do_not_duplicate or $post->ID == $do_not_duplicate_speaker_of_the_house ) continue;?>
     <!-- Do stuff... -->
-     
+     	<li class = "post-title-large-screen">
     	<?php get_template_part( 'entry-excerpt' ); ?>
+    	</li>
     	
-    	<div class="featured-post-content"> 
+
     	
-    	        	<?php get_template_part( 'entry-first-img' ); ?>
+    	<div class="featured-post-content-mobile"> 
+    	<?php get_template_part( 'entry-excerpt' ); ?>
+
+    	<?php get_template_part( 'entry-first-img' ); ?> 
+
 
     </div>    
     
   <?php endwhile; ?>    
         </div>
+        <div class="bottom-border"></div>
 </div>
 
 
 <!-- --------------------------------------------------------------------------------- --> 
-
 <div class="featured-section-arts-wrapper">
 
 <div class="featured-section-header" id="featured-section-header-arts"><a href="section/arts">Arts</a></div>
@@ -110,10 +155,11 @@
   while ($my_query->have_posts()) : $my_query->the_post();
   if( $post->ID == $do_not_duplicate ) continue;?>
     <!-- Do stuff... -->
+         	<div class="featured-post-content"> 
+
      
     	<?php get_template_part( 'entry-excerpt' ); ?>
     	
-    	<div class="featured-post-content"> 
     	
             	<?php get_template_part( 'entry-first-img' ); ?>
 
@@ -121,6 +167,8 @@
     
   <?php endwhile; ?>    
         </div>
+                <div class="bottom-border"></div>
+
         </div>
 <!-- --------------------------------------------------------------------------------- --> 
 
@@ -132,10 +180,10 @@
   while ($my_query->have_posts()) : $my_query->the_post();
   if( $post->ID == $do_not_duplicate ) continue;?>
     <!-- Do stuff... -->
-     
+         	<div class="featured-post-content"> 
+
     	<?php get_template_part( 'entry-excerpt' ); ?>
     	
-    	<div class="featured-post-content"> 
     	
             	<?php get_template_part( 'entry-first-img' ); ?>
 
@@ -143,6 +191,8 @@
     
   <?php endwhile; ?>    
         </div>
+                        <div class="bottom-border"></div>
+
         </div>
 
 <!-- --------------------------------------------------------------------------------- --> 
@@ -154,11 +204,11 @@
 <?php $my_query = new WP_Query('category_name=sports&posts_per_page=5');
   while ($my_query->have_posts()) : $my_query->the_post();
   if( $post->ID == $do_not_duplicate ) continue;?>
-     
+         <div class="featured-post-content"> 
+
     	<?php get_template_part( 'entry-excerpt' ); ?>
     	
-    	<div class="featured-post-content"> 
-    	        	<?php get_template_part( 'entry-first-img' ); ?>
+    	<?php get_template_part( 'entry-first-img' ); ?>
 
     </div>    
     
