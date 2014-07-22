@@ -3,12 +3,8 @@
 
 <span class="writername">
 By 
-<span id="author"> <?php $authorname = get_post_meta(get_the_ID(),'_my_meta_value_key', true);
-if( ! empty( $authorname ) ) {
-  echo $authorname;
-} 
-?>
-</span>
+<span class="author"> 
+<?php the_author();?></span>
 </span>
 
 <span class="meta-sep">  • </span>
