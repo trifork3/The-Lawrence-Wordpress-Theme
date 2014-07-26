@@ -1,12 +1,6 @@
-<section class="entry-meta">
-<!-- <span class="author vcard"><?php the_author_posts_link(); ?></span> -->
-
-<span class="writername">
-By 
+<div class="entry-info">
 <span class="author"> 
-<?php the_author();?></span>
-</span>
-
-<span class="meta-sep">  • </span>
+By <?php the_author();?></span>
+<span class="separators"> ◆ </span>
 <span class="entry-date"><?php the_time( get_option( 'date_format' ) ); ?></span>
-</section>
+</div>

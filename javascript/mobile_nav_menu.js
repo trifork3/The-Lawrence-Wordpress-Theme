@@ -13,28 +13,11 @@ function toggleMenu() {
 	}
 }
 
-/*
-Use: display:block; and display:none;
-var $logo = $('#logo-scroll');
-$(document).scroll(function() {
-    $logo.css({display: $(this).scrollTop()>100 ? "block":"none"});
-});
-
-var shadow = false;
-function moveUp() {
-    if(element.scrollTop == 0)
-    {
-        hideShadow();
+function toggleSearch() {
+   if( document.getElementById("mobile-search-box").style.display != "block"){
+    document.getElementById("mobile-search-box").style.display = ("block");
     }
-    else
-    {
-        showShadow()
+    else{
+    document.getElementById("mobile-search-box").style.display = "none";
     }
-    visible = !visible;
 }
-
-
-function showShadow() {
-    $("#header").css({'box-shadow: 0px 5px 10px #888888');
-}
-*/

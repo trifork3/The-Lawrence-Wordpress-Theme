@@ -232,45 +232,59 @@ function excerpt_length ($length) {
 	echo $excerpt;
 }
 
-	//get first image in post
-	function catch_that_image() {
-		global $post, $posts;
-		$first_img = '';
-		ob_start();
-		ob_end_clean();
-		$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-		$first_img = $matches[1][0];
-		return $first_img;
-	}
-	
-	function register_my_menus() {
-		register_nav_menus(    array(      'category-menu' => __( 'Category Menu' ),      'pages-menu' => __( 'Pages Menu' )    )  );
-	}
+//get first image in post
+function catch_that_image() {
+	global $post, $posts;
+	$first_img = '';
+	ob_start();
+	ob_end_clean();
+	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+	$first_img = $matches[1][0];
+	return $first_img;
+}
 
-	add_action( 'init', 'register_my_menus' );
+//check if post has an image
+function is_image() {
+	$content = $post->post_content;
+	$searchimages = '~<img [^>]* />~';
+	/*Run preg_match_all to grab all the images and save the results in $pics*/
+	preg_match_all( $searchimages, $content, $pics );
+	// Check to see if we have at least 1 image
+	$iNumberOfPics = count($pics[0]);
+	if ( $iNumberOfPics == 0 ) {
+		return false;
+	}
+	else {return true; }
+}
+
+function register_my_menus() {
+	register_nav_menus(    array(      'category-menu' => __( 'Category Menu' ),      'pages-menu' => __( 'Pages Menu' )    )  );
+}
+
+add_action( 'init', 'register_my_menus' );
 
 function excerpt($limit) {
-      $excerpt = explode(' ', get_the_excerpt(), $limit);
-      if (count($excerpt)>=$limit) {
-        array_pop($excerpt);
-        $excerpt = implode(" ",$excerpt).'...';
-      } else {
-        $excerpt = implode(" ",$excerpt);
-      } 
-      $excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
-      echo $excerpt;
-    }
+	$excerpt = explode(' ', get_the_excerpt(), $limit);
+	if (count($excerpt)>=$limit) {
+	array_pop($excerpt);
+	$excerpt = implode(" ",$excerpt).'...';
+	} else {
+	$excerpt = implode(" ",$excerpt);
+	} 
+	$excerpt = preg_replace('`\[[^\]]*\]`','',$excerpt);
+	echo $excerpt;
+}
 
-    function content($limit) {
-      $content = explode(' ', get_the_content(), $limit);
-      if (count($content)>=$limit) {
-        array_pop($content);
-        $content = implode(" ",$content).'...';
-      } else {
-        $content = implode(" ",$content);
-      } 
-      $content = preg_replace('/\[.+\]/','', $content);
-      $content = apply_filters('the_content', $content); 
-      $content = str_replace(']]>', ']]&gt;', $content);
-      echo $content;
-    }?>
+function content($limit) {
+	$content = explode(' ', get_the_content(), $limit);
+	if (count($content)>=$limit) {
+	array_pop($content);
+	$content = implode(" ",$content).'...';
+	} else {
+	$content = implode(" ",$content);
+	} 
+	$content = preg_replace('/\[.+\]/','', $content);
+	$content = apply_filters('the_content', $content); 
+	$content = str_replace(']]>', ']]&gt;', $content);
+	echo $content;
+}?>

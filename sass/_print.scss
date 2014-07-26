@@ -1,0 +1,52 @@
+@import 'required';
+@media print {
+	.header {
+		@include render-offscreen;
+		.logo-desktop{
+			@include render-onscreen;
+			height: 1in;
+			width: auto;
+			display: block;
+		}
+	}
+
+	.black-logo-for-print {
+		@include render-onscreen;
+		width: 100%;
+		border-bottom: 1px solid black;
+		img {
+			height: auto;
+			width: 4in;
+			margin: auto;
+			display: block;
+		}
+	}
+
+	.content{
+		margin-top: 0;
+		padding-top: 0;
+		margin-left: 0;
+		margin-right: 0in;
+		font-size: 14pt;
+		line-height: 14pt*1.4;	
+		img {
+			width: 50%!important;
+			height: auto!important;
+		}
+	}
+
+	blockquote {
+		border-left: none;
+		border-right: none;
+		border-bottom: none;
+		border-top: none;
+		width: 50%;
+		font-style: italics;
+		font-size: 18pt;
+	}
+
+
+	.sharedaddy{
+		@include render-offscreen;
+	}
+}

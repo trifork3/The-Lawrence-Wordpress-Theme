@@ -1,0 +1,190 @@
+img {
+    width: 100%;
+    height: auto;
+}
+
+.wp-caption img{
+    width: 100%; 
+    height: auto;
+}
+
+.wp-caption.alignnone {
+    width: 100%;  
+    height: auto;
+}
+
+.wp-caption p.wp-caption-text {
+    @include font-size-p($base-font-phone*0.8);
+    text-align: center;
+    margin-top: 0;
+}
+
+@media all and (max-width: 599px) { 
+    .alignnone {
+    }
+
+    .aligncenter,
+    div.aligncenter {
+    }
+
+    .alignright {
+        width: 100%!important;
+    }
+
+    .alignleft {
+    }
+
+    .aligncenter {
+    }
+
+    a img.alignright {
+    }
+
+    a img.alignnone {
+    }
+
+    a img.alignleft {
+    }
+
+    a img.aligncenter {
+    }
+
+    .wp-caption {
+    }
+
+    .wp-caption.alignnone {
+
+    }
+
+    .wp-caption.alignleft {
+        width: 100%!important;
+    }
+
+    .wp-caption.alignright {
+        width: 100%!important;
+    }
+
+    .wp-caption img {
+        margin-bottom: $base-font-phone*0.25;
+    }
+
+    .wp-caption p.wp-caption-text {
+    }
+}
+
+@media all and (min-width: 600px) { 
+    .alignnone {
+    }
+
+    .aligncenter,
+    div.aligncenter {
+    }
+
+    .alignright {
+        @include img-align-right($base-font-tablet);
+    }
+
+    .alignleft {
+        @include img-align-left($base-font-tablet);
+    }
+
+    .aligncenter {
+    }
+
+    a img.alignright {
+        @include img-align-right($base-font-tablet);
+    }
+
+    a img.alignnone {
+    }
+
+    a img.alignleft {
+        @include img-align-left($base-font-tablet);
+
+    }
+
+    a img.aligncenter {
+    }
+
+    .wp-caption {
+    }
+
+    .wp-caption.alignnone {
+
+    }
+
+    .wp-caption.alignleft {
+        @include img-align-left($base-font-tablet);
+    }
+
+    .wp-caption.alignright {
+        @include img-align-right($base-font-tablet);
+
+    }
+
+    .wp-caption img {
+        margin-bottom: $base-font-tablet*0.25;
+    }
+
+    .wp-caption p.wp-caption-text {
+    }
+}
+
+
+@media all and (min-width: 980px) { 
+    .alignnone {
+    }
+
+    .aligncenter,
+    div.aligncenter {
+    }
+
+    .alignright {
+        @include img-align-right($base-font-desktop);
+    }
+
+    .alignleft {
+        @include img-align-left($base-font-desktop);
+    }
+
+    .aligncenter {
+    }
+
+    a img.alignright {
+        @include img-align-right($base-font-desktop);
+    }
+
+    a img.alignnone {
+    }
+
+    a img.alignleft {
+        @include img-align-left($base-font-desktop);
+
+    }
+
+    a img.aligncenter {
+    }
+
+    .wp-caption {
+    }
+
+    .wp-caption.alignnone {
+
+    }
+
+    .wp-caption.alignleft {
+        @include img-align-left($base-font-desktop);
+    }
+
+    .wp-caption.alignright {
+        @include img-align-right($base-font-desktop);
+
+    }
+
+    .wp-caption img {
+        margin-bottom: $base-font-desktop*0.25;
+    }
+
+    .wp-caption p.wp-caption-text {
+    }
+}

@@ -3,7 +3,7 @@
   while ($my_query->have_posts()) : $my_query->the_post();
   $do_not_duplicate_speaker_of_the_house = $post->ID;?>
     <!-- Do stuff... -->
-    <div class="post-label">SPEAKER OF THE HOUSE</div>
+    <div class="post-category">SPEAKER OF THE HOUSE</div>
 
      <div class="featured-post-content">
     	<?php get_template_part( 'entry-title' ); ?>

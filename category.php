@@ -1,31 +1,42 @@
 <?php get_header(); ?>
 <div class="fixed-nav-padding" role="main">
-<div class="category-title"><?php _e( '', 'blankslate' ); ?><?php single_cat_title(); ?></div>
-<div class="category-page-wrapper"
+<div class="content-categorypage">
+<div class="category-title"> <h1><?php _e( '', 'blankslate' ); ?><?php single_cat_title(); ?></h1></div>
+<div class="gradient-divider"></div>
 <?php if ( '' != category_description() ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . category_description() . '</div>' ); ?>
-
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
- <div class="category-post">
-    	<div class="category-post-title"> <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></div>
-    	   <?php get_template_part( 'entry-meta' ); ?>
+ <article class="category-post">
+    	<h1> <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+    	 <?php get_template_part( 'entry-meta' ); ?>
+		
+		<?php
+			$content = $post->post_content;
+			$searchimages = '~<img [^>]* />~';
 
-            <?php if ( get_the_post_thumbnail($post_id) != '' ) {
-			echo  the_post_thumbnail();
-			}	 
-			else {;
- 			echo '<img src="';
- 			echo catch_that_image();
- 			echo '" alt="" />';
-			}?> 
+		/*Run preg_match_all to grab all the images and save the results in $pics*/
+		preg_match_all( $searchimages, $content, $pics );
 
-    	    <?php excerpt_length(300); ?>
+		// Check to see if we have at least 1 image
+		$iNumberOfPics = count($pics[0]);
 
-<div class="bottom-border"></div>
+		if ( $iNumberOfPics > 0 ) {
+		     //do stuff
 
+		 			echo '<img src="';
+		 			echo catch_that_image();
+		 			echo '" alt="" />';
+		}
+
+		?>
+
+    	    <p><?php excerpt_length(300); ?></p>
+</article>
+<div class="divider"></div>
 <?php endwhile; endif; ?>
-</div>
-
 <?php get_template_part( 'nav', 'below' ); ?>
+
+</div>
+</div>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
 

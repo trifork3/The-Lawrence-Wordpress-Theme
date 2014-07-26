@@ -1,0 +1,225 @@
+ul {
+	margin: 0;
+}
+
+.search-desktop {
+	float: left;
+	padding-left: $base-font-desktop*0.5;
+}
+
+input[type="search"] {
+	font-size: 20px;
+}
+
+::-webkit-input-placeholder {
+  color: #999;
+}
+
+.screen-reader-text{
+	@include render-offscreen;
+}
+
+.header .divider{
+	margin-top: 0.1rem;
+}
+
+.black-logo-for-print {
+	@include render-offscreen;
+}
+
+.header {
+	img {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+
+	width: 100%;
+	position: fixed;
+	z-index: 100;
+	background-color: white;
+	a {
+		color: black;
+	}
+	a:hover {
+		color: $lawrenceville-red;
+		text-decoration: none;
+	}
+
+	.category-menu{ 
+		text-align: center;
+		line-height: $base-font-phone*1.5;
+		display: none ;
+		font-weight: bold;
+		text-transform: uppercase;
+		padding-top:$base-font-phone*0.5;
+		padding-bottom: $base-font-phone*0.5;
+		opcacity: 0.9;
+		background-color: white;
+		li {
+			padding: 0px $base-font-phone;
+			display: inline-block;
+		}	
+		ul {
+			-webkit-padding-start: 0;
+		}
+	}
+
+	.menu-pages-container-desktop {
+		display: none;
+	}
+
+	.menu-pages-container-mobile {
+		display: none;
+		opcacity: 0.9;
+
+		ul {
+			text-align: center;
+			-webkit-padding-start: 0;
+		}
+		
+		li {
+			display: inline-block;
+			text-align: center;
+			padding: 0px $base-font-phone;
+		}
+	}
+
+	.logo {
+		padding-bottom: 5px;
+		width:100%;
+		background-color: $lawrenceville-red;
+		z-index: 100;
+		
+		img {
+			height: auto;
+			width: 200px;
+			display:block;
+			padding-top: 3px;
+			margin: auto;
+		}
+	}
+	.logo-desktop {
+		height: 0px;
+
+		img {
+		width: 0px;
+		}
+	} 
+
+	.hamburger-icon {
+		float: left;
+		padding-top:10px;
+		padding-left:5px;
+		:active{
+			background-color: $lawrenceville-green;
+			color: white;
+		}
+	}
+
+	.mobile-search {
+		float: right;
+	}
+
+	.mobile-search-box {
+		display:none;
+		float: right;
+	}
+}
+
+@media all and (min-width: 980px) {
+
+	.header {
+		position: relative;
+
+		.logo-desktop{
+			clear: both;
+			margin: auto;
+			width: 300px;
+			height: 70px!important;
+				
+			img {
+			width: 300px;
+			height: auto;
+			}
+		}
+
+		.logo{
+			background-color: white;
+			padding-bottom: 0px;
+			height: 0;
+
+			img{
+			height: 0px;
+			}
+		}
+
+		.category-menu {
+			border-top: 2px solid $lawrenceville-green;
+			border-bottom: thin solid #d3d3d3;
+			display: block;
+			font-size: $base-font-desktop*0.8;
+			font-weight: 800;
+			li {
+			display: inline;
+			}
+		}	
+
+
+		.menu-pages-container-desktop{
+			display: block;
+
+			li {
+				font-weight: 300;
+				font-size: $base-font-desktop*0.7;
+				padding: 0px $base-font-desktop;
+				display: inline;
+			}
+
+			ul{
+				-webkit-margin-before: 0;
+				-webkit-margin-after: 0;
+				-webkit-margin-start: 0px;
+				-webkit-margin-end: 0px;
+				-webkit-padding-start: 0;
+				display: block;
+				float: right;
+			}
+
+			.menu-secondary-navigation-container{
+				display: block;
+				position: relative;
+			}
+		}
+	}
+
+	.menu-pages-container ul{
+		display: block;
+		text-align: center;
+	} 
+
+	.menu-primary-navigation {
+		-webkit-margin-before: 0;
+		-webkit-margin-after: 0;
+		-webkit-margin-start: 0px;
+		-webkit-margin-end: 0px;
+		-webkit-padding-start: 0;
+	}
+	.menu-pages-container-mobile .menu-pages-container{
+		display: none;
+		/* Hide the mobile pages menu in desktop view. Mobile pages is
+		the one that has the (Subscribe, contact, ect.) under categories,
+		instead of above*/
+	}
+
+	.hamburger-icon {
+		display: none;
+		/*Hide nav button on large screens because the menu is already presented*/
+	}
+	.mobile-search {
+		display: none;
+	}
+
+	.fixed-nav-padding{
+		padding-top: 0;
+	}
+}

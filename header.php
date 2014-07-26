@@ -32,39 +32,56 @@
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
   ga('create', 'UA-52389566-1', 'auto');
   ga('require', 'displayfeatures');
   ga('send', 'pageview');
-
 </script>
-
 
 <script type="text/javascript" async src="wordpress/javascript/mobile_nav_menu.js"></script>
 
 </head>
+
+
 <body <?php body_class(); ?>>
 
 <div class="header" id="header" >
 
 <div class="menu-pages-container-desktop">
 
-  <div class="search">
+  <div class="search-desktop">
     <?php get_search_form(); ?> 
   </div> 
 <?php wp_nav_menu( array( 'theme_location' => 'pages-menu', ) );?>
-
-
-
 </div>
 
 <div class="logo">
 	<div onclick="toggleMenu()" class="hamburger-icon">
-	☰
+              	<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="30px" height="25px" viewBox="0 0 30 25" enable-background="new 0 0 64 64" xml:space="preserve">
+              <g>
+                
+                  <rect x="4" y="5" fill="white" width="26" height="3"/>
+              
+                  <rect x="4" y="12" fill="white" width="26" height="3"/>
+                
+                  <rect x="4" y="19" fill="white" width="26" height="3"/>
+          
+              </g>
+              </svg>
 	</div>
-    <a href="<?php echo get_option('home'); ?>/"><img src="http://www.thelawrence.org/wp-content/uploads/2014/07/the-lawrence-logo-white-compressed.png"/></a>
+  <div onclick="toggleSearch()" class="mobile-search">
+    <svg height="35" width="35">
+      <circle cx="16" cy="16" r="11" stroke="white" stroke-width="3" fill="transparent"/>
+       <line x1="25" y1="25" x2="32" y2="32" stroke="white" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="mobile-search-box" id="mobile-search-box">
+      <?php get_search_form(); ?> 
+    </div>
+    <a href="<?php echo get_option('home'); ?>/"><img src="http://www.thelawrence.org/the-lawrence-logo-white-compressed.png"/></a>
 	
 </div>
+
 	<div class="logo-desktop">
     	<a href="<?php echo get_option('home'); ?>/"><img src="/the-lawrence-logo-red-compressed.png" title="" /></a>
 	</div>
@@ -95,6 +112,8 @@
 	<?php wp_nav_menu( array( 'theme_location' => 'pages-menu', ) );?>
 </div>
 </div>
+
+<div class="black-logo-for-print"> <img src="http://www.thelawrence.org/the-lawrence-logo-black-compressed.png"/></div>
 
 
 

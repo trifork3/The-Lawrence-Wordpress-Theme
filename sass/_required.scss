@@ -1,0 +1,93 @@
+$lawrenceville-red: #8f363f;
+$lawrenceville-red-desaturated: #efd5d8;
+$lawrenceville-green: #368f86; 
+$lawrenceville-green-desaturated: #d5efec;
+$light-grey: #e2e2e2;
+$light-grey-text: #999;
+$line-height-p: 1.45;
+$line-height-h: 1.2;
+	/*Complementary color from http://www.colorhexa.com/8f363f*/
+
+$base-font-phone: 1.1rem;
+$base-font-tablet: 1.2rem;
+$base-font-desktop: 1.3rem;
+$sans-serif: Lato;
+$serif: Cardo;
+/*line-height for headine is 120%, for body text is 135%*/
+
+
+$mobile-margin: 4vw;
+$tablet-margin: 5vw;
+
+$image-width-small: 30%!important;
+$small-margin-multiplier: 0.25;
+
+@mixin render-offscreen {
+	position: absolute;
+	top: -9999px;
+	left:-9999px;
+	width: 0;
+	height: 0;
+}
+
+@mixin render-onscreen {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: auto;
+	height: auto;
+}
+
+@mixin homepage-left {
+	padding-bottom: 0;
+	width: 48%;
+	padding-right: 2%;
+	margin-left: -5px;
+	margin-top: $base-font-tablet;
+	float: left;
+	padding-top: 0;
+	display: inline-block;
+	position: relative;
+	left: 5px;
+}
+
+@mixin homepage-right {
+	padding-bottom: 0;
+	width: 48%;
+	padding-left: 2%;
+	border-left: 1px solid #e2e2e2;
+	float: right;
+	padding-top: 0em;
+	display: inline-block;
+	position: relative;
+	margin-top: $base-font-tablet;
+}
+
+@mixin font-size-p ($specified-font-size-p){
+	font-size: $specified-font-size-p;
+	line-height: $specified-font-size-p*$line-height-p;
+}
+
+@mixin font-size-h ($specified-font-size-h){
+	font-size: $specified-font-size-h;
+	line-height: $specified-font-size-h*$line-height-h;
+}
+
+@mixin mobile-homepage-section-spacing {
+	margin-top: $base-font-phone*1.5;
+}
+
+@mixin img-align-right ($margin-size-before-multiplier-right){
+	width: $image-width-small;
+    float: right;
+    margin-bottom: $margin-size-before-multiplier-right*$small-margin-multiplier;
+    margin-left: $margin-size-before-multiplier-right;
+}
+
+@mixin img-align-left ($margin-size-before-multiplier-left){
+	width: $image-width-small;
+    float: left;
+    margin-bottom: $margin-size-before-multiplier-left*$small-margin-multiplier;
+    margin-right: $margin-size-before-multiplier-left;
+}
+
