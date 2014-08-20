@@ -21,3 +21,17 @@ function toggleSearch() {
     document.getElementById("mobile-search-box").style.display = "none";
     }
 }
+
+function toggleCommentRespond() {
+   if( document.getElementById("comment-respond-expand").style.display == "block"){
+    document.getElementById("comment-respond-expand").style.display =("none");
+    document.getElementById("comment-respond-shrink").style.display =("block");
+    document.getElementById("commentform").className = "comment-form-open";
+
+  }
+  else {
+    document.getElementById("comment-respond-expand").style.display = ("block");
+    document.getElementById("comment-respond-shrink").style.display =("none");
+    document.getElementById("commentform").className = "comment-form";
+  }
+}

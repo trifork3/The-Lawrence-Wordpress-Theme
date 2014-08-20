@@ -8,8 +8,9 @@
 <div class="title"><h1 class="title"><?php the_title(); ?></h1> </div>
 <div class="divider"> </div>
 </header>
-<?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+<div class="post-body">
 <?php the_content(); ?>
+</div>
 <div class="entry-links"><?php wp_link_pages(); ?></div>
 </article>
 <?php endwhile; endif; ?>

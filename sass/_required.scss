@@ -1,23 +1,51 @@
-$lawrenceville-red: #8f363f;
-$lawrenceville-red-desaturated: #efd5d8;
-$lawrenceville-green: #368f86; 
-$lawrenceville-green-desaturated: #d5efec;
+$lawrenceville-red: #C3002F;
+$lawrenceville-red-desaturated: #ffd7e0;
+$lawrenceville-green: #00c394;
+$lawrenceville-green-desaturated: #d7fff5;
 $light-grey: #e2e2e2;
 $light-grey-text: #999;
+
 $line-height-p: 1.45;
-$line-height-h: 1.2;
+$line-height-h: 1.25;
 	/*Complementary color from http://www.colorhexa.com/8f363f*/
 
 $base-font-phone: 1.1rem;
 $base-font-tablet: 1.2rem;
 $base-font-desktop: 1.3rem;
+$base-headline-multiplier: 1.75;
+
 $sans-serif: Lato;
 $serif: Cardo;
-/*line-height for headine is 120%, for body text is 135%*/
+//line-height for headine is 120%, for body text is 135%
+
+//bp stands for break point
+$bp-small: "(max-width: 599px)";
+$bp-medium: "(min-width: 600px)";
+$bp-large: "(max-width: 980px)";
+$bp-huge: "(max-width: 1200px)";
+
+@mixin bp($point) {
+  @if $point == huge {
+    @media (min-width: 1200px) { @content; }
+  }
+  @else if $point == large {
+    @media (min-width: 980px) { @content; }
+  }
+  @else if $point == medium {
+    @media (min-width: 600px)  { @content; }
+  }
+	@else if $point == small {
+		@media (max-width: 599px)  { @content; }
+	}
+}
+
 
 
 $mobile-margin: 4vw;
 $tablet-margin: 5vw;
+$tablet-desktop-width: 90vw;
+
+$max-page-width: 800px;
 
 $image-width-small: 30%!important;
 $small-margin-multiplier: 0.25;
@@ -90,4 +118,3 @@ $small-margin-multiplier: 0.25;
     margin-bottom: $margin-size-before-multiplier-left*$small-margin-multiplier;
     margin-right: $margin-size-before-multiplier-left;
 }
-

@@ -1,61 +1,56 @@
 <?php get_header(); ?>
-<section class="article-list-wrap" role="main">
-
-<header class="header">
-<div class="category-title"><?php _e( '', 'blankslate' ); ?><?php single_cat_title(); ?></div>
-
-</header>
+<div class="fixed-nav-padding" role="main">
+<div class="content-categorypage">
 
 
- <div class="category-post">
 
+<div class="category-title"> <h1><?php _e( '', 'blankslate' ); ?><?php single_cat_title(); ?></h1></div>
+
+<div class="category-post-featured">
+<article class="post-summary">
 <?php get_template_part('senior-columnist-1')?>
-</div>
-<div class="bottom-border"> </div>
-
- <div class="category-post">
-
+</article>
+<div class="flex-divider"></div>
+<article class="post-summary">
 <?php get_template_part('senior-columnist-2')?>
+</article>
 </div>
-<div class="bottom-border"> </div>
 
 
 <?php if ( '' != category_description() ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . category_description() . '</div>' ); ?>
-
-
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
- <?php if( $post->ID == $do_not_duplicate or $post->ID == $do_not_duplicate_speaker_of_the_house ) continue;?>
- <div class="category-post">
- <div class="featured-post-content">
-		
-		<?php get_template_part('entry-title')?>
-    	<?php get_template_part('entry-meta')?>
-		<!--
-    	<div class="category-img">
-    		<?php if ( get_the_post_thumbnail($post_id) != '' ) {
-			echo  the_post_thumbnail();
-			}	 
-			else {;
- 			echo '<img src="';
- 			echo catch_that_image();
- 			echo '" alt="" />';
-			}?> 
-		</div> -->
+ <article class="post-summary">
+    	<div class="title"> <h1> <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1></div>
+    	 <?php get_template_part( 'entry-meta' ); ?>
 
-    	<p>
-    	<?php excerpt_length(400); ?>
-		</p>
-    </div>
-    		</div>
-    
-<div class="bottom-border"> </div>
+		<?php
+			$content = $post->post_content;
+			$searchimages = '~<img [^>]* />~';
+
+		/*Run preg_match_all to grab all the images and save the results in $pics*/
+		preg_match_all( $searchimages, $content, $pics );
+
+		// Check to see if we have at least 1 image
+		$iNumberOfPics = count($pics[0]);
+
+		if ( $iNumberOfPics > 0 ) {
+		     //do stuff
+
+		 			echo '<img src="';
+		 			echo catch_that_image();
+		 			echo '" alt="" />';
+		}
+
+		?>
+
+    	    <p><?php excerpt_length(300); ?></p>
+<div class="divider"></div>
+</article>
 
 <?php endwhile; endif; ?>
-
-</section>
-<!--
 <?php get_template_part( 'nav', 'below' ); ?>
-<?php get_sidebar(); ?>
-<?php get_footer(); ?> -->
 
-   
+</div>
+</div>
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>

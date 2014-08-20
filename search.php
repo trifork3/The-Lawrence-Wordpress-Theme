@@ -1,8 +1,9 @@
 <?php get_header(); ?>
-<section class="content" role="main">
+<div class="fixed-nav-padding">
+<section class="content-searchpage" role="main">
 <?php if ( have_posts() ) : ?>
 <header class="post-header">
-<h1 class="entry-title"><?php printf( __( 'Search Results for: %s', 'blankslate' ), get_search_query() ); ?></h1>
+<div class="title"<h1 class="entry-title"><?php printf( __( 'Search Results for: %s', 'blankslate' ), get_search_query() ); ?></h1></div>
 </header>
 <?php while ( have_posts() ) : the_post(); ?>
 <?php get_template_part( 'entry-search'); ?>
@@ -20,5 +21,6 @@
 </article>
 <?php endif; ?>
 </section>
+</div>
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -3,12 +3,12 @@ Theme Name: The Lawrence on the web
 Theme URI: http://thelawrence.org
 Author: The Lawrence 134
 Author URI: http://thelawrence.org
-Description: The theme for The Lawrence's website. Designed with love by Eric 
+Description: The theme for The Lawrence's website. Designed with love by Eric
 	Chen of the 134th.
 Version: 1.0
 License: GNU General Public License
 License URI: https://www.gnu.org/licenses/gpl.html
-Tags: 
+Tags:
 Text Domain: blankslate
 
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,
@@ -34,43 +34,82 @@ menu,nav,section{display:block}.clear{clear:both}.sticky{}.bypostauthor{}
 @import 'print';
 @import 'header';
 @import 'image-formatting';
+@import 'comments';
+@import 'footer';
+@import 'board-picks';
 
 
 body {
 	font-family: $sans-serif;
 	hyphens: auto;
 	margin: 0;
-	color: black;
+
+	@include bp(small) {
+		@include font-size-p($base-font-phone);
+	}
+
+	@include bp(medium) {
+		@include font-size-p($base-font-tablet);
+	}
+
+	@include bp(large) {
+		@include font-size-p($base-font-desktop);
+	}
 }
 
+p {
+	font-family: $sans-serif !important;
 
-p a:link { color: $lawrenceville-red; text-decoration: none; }
-p a:hover { text-decoration: underline;}
+	@include bp(small) {
+		@include font-size-p($base-font-phone);
+	}
+
+	@include bp(medium) {
+		@include font-size-p($base-font-tablet);
+	}
+
+	@include bp(large) {
+		@include font-size-p($base-font-desktop);
+	}
+}
+
+// Link Formatting -------------------------------------------------------------
+
+a:link { color: $lawrenceville-red; text-decoration: none; }
+a:visited {color: $lawrenceville-red;}
+a:hover { color: $lawrenceville-green; }
 
 .title a{
+	text-decoration: none;
 	:link {
-		color: black; 
-		text-decoration: none
+		color: black;
+		text-decoration: none;
 	}
-	:hover { 
+	:hover {
 		border-bottom: 2px solid $lawrenceville-green;
 	}
 }
 
-a:link { color: black; text-decoration: none}
-a:hover {color: $lawrenceville-red;}
+.header a ,
+.footer a { color: black; }
+
+.header a:hover,
+.footer a:hover {color: $lawrenceville-red;}
+
+.no-underline a { text-decoration: none; }
+.no-underline a:hover{ color: $lawrenceville-green;}
+
+.post-category a{text-decoration: none;}
+.post-category a:hover{ border-bottom: 2px solid $lawrenceville-red;}
 
 :-webkit-any(article,aside,nav,section) :-webkit-any(article,aside,nav,section) h1 {
 	-webkit-margin-before: 0;
 	-webkit-margin-after: 0;
 }
 
-strong { font-weight: bold;}
-b { font-weight: bold; }
-em { font-style: italic; }
-
 h1 {
 	font-weight: normal;
+	text-rendering: optimizeLegibility;
 	a:link{
 		color: black;
 	}
@@ -88,14 +127,32 @@ h1 {
 }
 
 
+strong { font-weight: bold;}
+b { font-weight: bold; }
+em { font-style: italic; }
+
+
 blockquote{
-	text-align: center;
 	margin: auto;
 	color: $lawrenceville-red;
+
+	@include bp(small) {
+		@include font-size-h($base-font-phone*1.5);
+	}
+	@include bp(medium) {
+		@include font-size-h($base-font-tablet*1.5);
+	}
+	@include bp(large) {
+		@include font-size-h($base-font-desktop*1.5);
+	}
 }
 
 .fixed-nav-padding{
 	padding-top: 46px;
+
+	@include bp(large) {
+		padding-top: 0;
+	}
 }
 
 .divider{
@@ -104,20 +161,41 @@ blockquote{
 	border-top: 1px solid $light-grey;
 }
 
-.gradient-divider {
-    height: 2px;
-    margin-top: 1px;
-    background: linear-gradient(to right, #ffffff 0%,$lawrenceville-red-desaturated 25%,
-    	$lawrenceville-red-desaturated 50%, $lawrenceville-red-desaturated 75%,#ffffff 100%); 
+.divider-double{
+	clear: both;
+	width: 100%;
+	position: relative;
+	top: 5px;
+	margin-bottom: 0.5rem;
+	margin-top: 0.5rem;
+	height: 1px;
+	border-top: 2px solid $light-grey;;
+	border-bottom: 2px solid $light-grey;;
 }
 
+.wrapper {
+	min-height: 100vh;
+}
 
 .post-header {
-	.title h1{
+	.title h1 {
 		margin-top: 0;
 	}
-}
 
+	.divider {
+		@include bp(small){
+			margin-bottom: $base-font-phone*$small-margin-multiplier;
+			margin-left: $mobile-margin;
+			margin-right: $mobile-margin;
+		}
+		@include bp(medium){
+			margin-bottom: $base-font-tablet*$small-margin-multiplier;
+		}
+		@include bp(large){
+			margin-bottom: $base-font-desktop*$small-margin-multiplier;
+		}
+	}
+}
 
 .post-edit-link{
 	border: 1px solid $light-grey;
@@ -132,129 +210,127 @@ blockquote{
 .post-category {
 	color: $lawrenceville-green;
 	text-transform: uppercase;
-	text-decoration: none;
-}
+	position: relative;
 
-.post-header {
-	.post-category {
-		top: 0;
-		a {
-			color: $lawrenceville-green;
-		}
+	a {
+		color: $lawrenceville-green;
+	}
+	@include bp(small) {
+		@include font-size-h($base-font-phone*0.8);
+	}
+	@include bp(medium) {
+		@include font-size-h($base-font-tablet*0.8);
 	}
 }
+
 
 .separators {
 	color: $light-grey-text !important;
 }
 
+/*-------For the homepage, category page, and search page) ---------*/
+.content-homepage,
+.content-searchpage,
+.content-categorypage {
 
-/*---------For the home page ---------*/
-.content-homepage {
-	.entry-info{;
+		p {
+			@include bp(small){
+				@include font-size-p($base-font-phone*0.9);
+				margin-bottom: $base-font-phone;
+				margin-top: $base-font-phone*$small-margin-multiplier;
+			}
+		}
+
+	.entry-info{
 		color: $light-grey-text;
 	}
 }
 
-.featured-post {
-	.excerpt-large-screen {
-		@include render-offscreen;
-	}
-}
 
-
-.featured-section-header-large {
-	text-align: center;
-	font-family: $serif;
-	a {
-		color: $lawrenceville-red;
-		text-transform: uppercase;
-	}
-}
-
-
-.featured-section-header-small {
-	text-align: center;
-	font-family: $serif;
-	a {
-		color: $lawrenceville-red;
-		text-transform: uppercase;
-	}
-}
-
-
-
-/* -----------------Super small devices aka Phones-------------------- */
-@media (max-width: 599px) { 
-	body {
-		@include font-size-p($base-font-phone);
-	}
-
-
-	img {
-		margin-top: $base-font-phone;
-		margin-bottom: $base-font-phone;
-
-		.alignright {
-			// Don't do anything, because screen to small to change alignment
-		}
-
-		.alignleft {
-		    // Don't do anything, because screen to small to change alignment
-		}
-	}
-
-	blockquote{
-		width: 80vw;
-		color: $lawrenceville-red;
-		@include font-size-h($base-font-phone*1.5);
-	}
-
-
-	.entry-info{
+.entry-info {
+	@include bp(small) {
 		@include font-size-h($base-font-phone*0.8);
 	}
+	@include bp(medium) {
+		@include font-size-h($base-font-tablet*0.8);
+	}
+	@include bp(large) {
+		@include font-size-h($base-font-desktop*0.8);
+	}
+}
 
 
-	.content{
-		padding-top: $base-font-phone;
+.featured-post {
 
-		.title h1{
-			@include font-size-h($base-font-phone*1.75);
-		}
-
-		p {
-			margin-left: $mobile-margin;
-			margin-right: $mobile-margin;
+	@include bp(small) {
+		.excerpt-large-screen {
+			@include render-offscreen;
 		}
 	}
 
-	.content-homepage {
-		.gradient-divider {
+	@include bp(medium) {
+		@include homepage-left;
+		margin-top: 0;
+
+		.excerpt-small-screen {
 			@include render-offscreen;
 		}
 
-		p {
-			@include font-size-p($base-font-phone*0.9);
+		.featured-img {
+			// A soft crop in CSS of the image
+			max-height: 300px;
+			overflow: hidden;
+			margin-bottom: $base-font-tablet;
 		}
-	}
 
-	.title h1 {
-		margin-bottom: $base-font-phone*0.2;
-	}
-
-	.featured-post {
 		.title h1{
-			@include font-size-h($base-font-phone*1.5);
-			margin-left: $mobile-margin;
-			margin-left: $mobile-margin;
+			@include font-size-h($base-font-tablet*1.5);
 		}
+	}
+}
 
-		p{
-			margin-left: $mobile-margin;
-			margin-left: $mobile-margin;
+
+.featured-section-header {
+	text-align: center;
+	font-family: $serif;
+	a {
+		color: $lawrenceville-red;
+		text-transform: uppercase;
+	}
+}
+
+.featured-section-news-wrapper {
+	@include bp(medium){
+		@include homepage-right;
+		p {
+			@include render-offscreen;
 		}
-		.featured-img { 
+	}
+
+	@include bp(large){
+		width: 65%;
+		p {
+			@include render-onscreen;
+		}
+		.featured-section-news{
+			display: flex;
+			flex-wrap: wrap;
+			flex-direction: row;
+			justify-content: space-between;
+
+			.post-summary {
+				width: 48%;
+			}
+		}
+	}
+}
+
+
+.post-summary {
+	@include bp(small) {
+		margin-right: $mobile-margin;
+		margin-left: $mobile-margin;
+		.featured-img {
 			// A soft crop in CSS of the image
 			max-height: 50vh;
 			overflow: hidden;
@@ -264,18 +340,103 @@ blockquote{
 		}
 	}
 
+	@include bp(large) {
+		width:auto;
+
+		p {
+		position: relative;
+		top: 0;
+		left:0;
+		height: auto;
+		}
+	}
+}
+
+
+
+.title h1 {
+	@include bp(medium) {
+		margin-bottom: $base-font-tablet *$small-margin-multiplier;
+		//to have the entry-info line up cloaser to title
+	}
+	@include bp(large) {
+		margin-bottom: $base-font-desktop*$small-margin-multiplier;
+	}
+}
+
+
+.content {
+	@include bp(small) {
+		padding-top: $base-font-phone;
+
+		.title h1{
+			@include font-size-h($base-font-phone*$base-headline-multiplier);
+			margin-bottom: 0;
+		}
+	}
+
+	@include bp(medium) {
+		padding-top: $base-font-tablet;
+		width: 90vw;
+		max-width: $max-page-width;
+		margin: auto;
+
+		.title h1{
+			@include font-size-h($base-font-tablet*$base-headline-multiplier);
+		}
+	}
+
+	@include bp(large) {
+		width: $max-page-width;
+		margin-top: $base-font-desktop;
+		padding-top: 0;
+
+		.title h1 {
+			@include font-size-h($base-font-desktop*$base-headline-multiplier);
+		}
+	}
+}
+
+.content-searchpage {
+	@include bp(medium) {
+		width: $tablet-desktop-width;
+		max-width: $max-page-width;
+		margin: auto;
+	}
+}
+
+/* -----------------Super small devices aka Phones-------------------- */
+@media (max-width: 599px) {
+
+	.post-body {
+		p,
+		h1,
+		h2,
+		h3,
+		ul,
+		ol {
+			margin-left: $mobile-margin;
+			margin-right: $mobile-margin;
+		}
+	}
+
+	.content-homepage,
+	.content-searchpage,
+	.content-categorypage{
+
+		.title h1 {
+			margin-bottom: $base-font-phone*$small-margin-multiplier;
+			margin-top: $base-font-phone;
+			@include font-size-h($base-font-phone*1.5);
+		}
+
+	}
+
+
 	/* For the sections featured on the front page (More News, Sports, Arts, Opinions, Features)*/
 
 	.featured-section {
-		margin-right: $mobile-margin;
-		margin-left: $mobile-margin;
 
-		.entry-info {
-			@include font-size-h($base-font-phone*0.7)
-		}
-
-		p { 
-		}
 		img {
 			@include render-offscreen;
 		   	/*Hide the author name and date published in the featured post*/
@@ -289,43 +450,27 @@ blockquote{
 			@include font-size-h($base-font-phone*1.2);
 		}
 
-		.featured-post-content {
+		.post-summary {
 			border-bottom: 1px solid $lawrenceville-red-desaturated;
 		}
 	}
 
-	.featured-section-header-large {
-		@include font-size-h($base-font-phone*2);
+	.featured-section-header {
+		@include font-size-h($base-font-phone*1.5);
 		border-top: 1px solid $lawrenceville-red-desaturated;
 		border-bottom: 1px solid $lawrenceville-red-desaturated;
 		background-color: $light-grey;
 		margin-top: -1px;
 	}
 
-	.featured-section-header-small {
-		@include font-size-h($base-font-phone*1.2);
-		background-color: $light-grey;
-		border-top: 1px solid $lawrenceville-red-desaturated;
-		border-bottom: 1px solid $lawrenceville-red-desaturated;
-		margin-top: -1px;
-	}
 
-	.post-header {
-		margin-left: $mobile-margin;
-		margin-right: $mobile-margin;
-
-		.divider {
-			margin-bottom: $base-font-phone*$small-margin-multiplier;
-		}
-	}
-
-	.post-category {
-		@include font-size-h($base-font-phone*0.8);
-		position: relative;
-		top: $base-font-phone*0.9;
-	}
 
 	.nav-below {
+		margin-left: $mobile-margin;
+		margin-right: $mobile-margin;
+	}
+
+	.sharedaddy {
 		margin-left: $mobile-margin;
 		margin-right: $mobile-margin;
 	}
@@ -333,95 +478,22 @@ blockquote{
 
 
 /* -------------Small devices (tablets, 600px and up)------------------- */
-@media all and (min-width: 600px) { 
-	body {
-		@include font-size-p($base-font-tablet);
-	}
+@media all and (min-width: 600px) {
 
-
-	img {
-		margin-top: $base-font-tablet;
-		margin-bottom: $base-font-tablet;
-	}
-
-	blockquote{
-		width: 70vw;
-		@include font-size-h($base-font-tablet*1.5);
-	}
-
-
-	.divider-double{
-		clear: both;
-		width: 100%;
-		position: relative;
-		top: 5px;
-		margin-bottom: 0.5rem;
-		margin-top: 0.5rem;
-		height: 1px;
-		border-top: 2px solid $light-grey;;
-		border-bottom: 2px solid $light-grey;;
-	}
-
-	.entry-info{
-		@include font-size-h($base-font-tablet*0.8);
-	}
-
-
-	.post-header {
-		.divider {
-			margin-bottom: $base-font-tablet*$small-margin-multiplier;
-		}
-	}
-	
 	/*------------For the home page ---------*/
-	.title h1 {
-		margin-bottom: $base-font-tablet *0.2;
-		//to have the entry-info line up cloaser to title
-	}
+
 
 	.content-homepage{
 		width: 90vw;
 		margin: auto;
 
-		p { 
+		p {
 			@include font-size-p($base-font-tablet*0.8);
 		}
 	}
 
-	.featured-post{
-		@include homepage-left;
-		margin-top: 0;
 
-		.excerpt-large-screen {
-			@include render-onscreen;
-		}
-
-		.excerpt-small-screen {
-			@include render-offscreen;
-		}
-
-		.featured-img { 
-			// A soft crop in CSS of the image
-			max-height: 300px;
-			overflow: hidden;
-		}
-
-		.title h1{
-			@include font-size-h($base-font-tablet*1.5);
-		}
-	}
-
-	.featured-section-header-small {
-		width: 100%;
-		text-align: center;
-		a {
-			color: $lawrenceville-red;
-			text-transform: uppercase;
-			@include font-size-h($base-font-tablet*1.5);
-		}
-	}
-
-	.featured-section-header-large {
+	.featured-section-header {
 		width: 100%;
 		text-align: center;
 		a {
@@ -434,8 +506,8 @@ blockquote{
 	.featured-section{
 		width: 100%;
 
-		.featured-post-content {
-			margin-top: $base-font-tablet;
+		.post-summary {
+			margin-top: $base-font-tablet*$small-margin-multiplier;
 		}
 
 		.title h1 {
@@ -443,23 +515,12 @@ blockquote{
 		}
 	}
 
-	.featured-section-news-wrapper  {
-		@include homepage-right;
-		p {
-			@include render-offscreen;
-		}
-	}
 
-	.featured-section .featured-post-content .featured-img {
+	.featured-section .post-summary .featured-img {
 		@include render-offscreen;
 		img{
 			@include render-offscreen;
 		}
-	}
-
-
-	.featured-post-content-mobile {
-		@include render-offscreen;
 	}
 
 	.featured-section-editorial-wrapper{
@@ -485,69 +546,21 @@ blockquote{
 	.featured-section-features-wrapper{
 		@include homepage-left;
 	}
-
-
-	.post-category{
-		@include font-size-h($base-font-tablet*0.8);
-		position: relative;
-		top: $base-font-tablet*0.9;
-	}
-
-
-	.content {
-		padding-top: $base-font-tablet;
-		width: 90vw;
-		max-width: 700px;
-		margin: auto;
-
-		.title h1{
-			@include font-size-h($base-font-tablet*1.75);
-		}
-		
-		.entry-info {
-			@include font-size-h($base-font-tablet*0.8);
-			color: black;
-			
-		}
-	}
 }
 
 /* Laptops, Desktops, and large tablets 980px and up */
-@media all and (min-width: 980px) { 
-	body {
-		@include font-size-p($base-font-desktop);
-	}
-	p {
-		-webkit-margin-before: $base-font-desktop;
-		-webkit-margin-after: $base-font-desktop;
-	}
-
-	.content{
-		width: 75vw;
-		max-width: 700px;	
-		margin-top: $base-font-desktop;
-		padding-top: 0;
-
-		.title h1 {
-			@include font-size-h($base-font-desktop*1.75);
-		}
-	}
-
-	.fixed-nav-padding {
-		padding-top: 0;
-	}
+@media all and (min-width: 980px) {
 
 	.content-homepage {
 		width: 90vw;
 		max-width: 1000px;
 		margin: auto;
-		padding-top: $base-font-desktop;
 	}
 
-	.featured-post-content {
+	.post-summary {
 		p {
 			@include render-onscreen;
-			-webkit-margin-before: 0rem;
+			-webkit-margin-before: $base-font-desktop*$small-margin-multiplier;
 		}
 
 		a img {
@@ -555,23 +568,8 @@ blockquote{
 		width: auto;
 		float: right;
 	    /*For full-width images
-	    A little bigger than what makes mathematical sense 
+	    A little bigger than what makes mathematical sense
 	    because browser resizing is a little funky sometimes*/
-		}
-	}
-
-
-	blockquote{
-		width: 50vw;
-		max-width: 500px;
-		@include font-size-h($base-font-desktop*1.2);
-	}
-
-
-
-	.post-header {
-		.divider {
-			margin-bottom: $base-font-desktop*$small-margin-multiplier;
 		}
 	}
 
@@ -580,43 +578,4 @@ blockquote{
 		margin: auto;
 	}
 
-	.featured-post-content{
-		width:auto;
-
-		img {
-		float: left;
-		padding-right: 1em;
-		height:200px;
-		width:auto;
-		}
-
-		p {
-		position: relative;
-		top: 0;
-		left:0;
-		height: auto;
-		}
-
-	}
-
-	.featured-section-news-wrapper{
-		width: 65%;
-		.featured-section-news{
-			display: flex;
-			flex-wrap: wrap;
-			flex-direction: row;
-			justify-content: space-between;
-
-			.featured-post-content {
-				width: 48%;
-			}
-		}
-	}
 }
-
-
-/* Large Display (Laptops, Desktops, and large tablets 1200px and up) */
-@media all and (min-width: 1200px) { 
-
-}
-

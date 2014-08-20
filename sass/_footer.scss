@@ -1,0 +1,43 @@
+.clear {
+  clear: both;
+  position: relative;
+}
+
+.footer {
+  clear: both;
+  position: relative;
+  background-color: $light-grey;
+  overflow: hidden;
+  @include font-size-p ($base-font-phone*0.75);
+  text-align: center;
+
+  p {
+    width: 92vw;
+    margin: auto;
+    margin-top: $base-font-phone;
+    margin-bottom: $base-font-phone;
+  }
+
+
+  .footer-the-lawrence-logo {
+    width: 200px;
+    height: auto;
+
+      margin: auto;
+
+  }
+
+  .footer-lawrenceville-logo {
+      margin: auto;
+      width: 100px;
+      height: auto;
+
+  }
+
+
+  .divider {
+    width: 100vw;
+    border-top: 2px solid $lawrenceville-red;
+    margin-bottom: 4*$base-font-phone;
+  }
+}

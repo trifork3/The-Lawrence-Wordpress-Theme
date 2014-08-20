@@ -91,3 +91,6 @@ if ( !defined('ABSPATH') )
 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
+
+/* Limit the Post revisions to 1 version*/
+define( 'WP_POST_REVISIONS', 1 );

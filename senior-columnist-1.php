@@ -6,8 +6,6 @@
      <div class="featured-post-content">
     	<?php get_template_part( 'entry-title' ); ?>
     	<?php get_template_part( 'entry-meta');?>
-    	<?php get_template_part( 'entry-first-img' ); ?>
-
     	<p><?php excerpt_length(200); ?></p>
     </div>
     

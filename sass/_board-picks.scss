@@ -1,0 +1,17 @@
+.board-picks {
+  font-size: 75%;
+  text-align: center;
+  hyphens: none;
+  border-collapse: collapse;
+  
+  td {
+    border: 1px solid $light-grey;
+    margin: none;
+    padding: 1rem;
+  }
+
+  @media all and (min-width: 980px) {
+    width: 970px;
+  }
+
+}
