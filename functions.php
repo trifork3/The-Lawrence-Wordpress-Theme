@@ -1,4 +1,8 @@
 <?php
+
+/* include the file needed for the dynamic elements of the 'Recent Issues' page */
+require_once( get_template_directory() . '/recent-issues-ajax.php' ); 
+
 	add_action( 'after_setup_theme', 'blankslate_setup' );
 	function blankslate_setup(){
 		load_theme_textdomain( 'blankslate', get_template_directory() . '/languages' );
