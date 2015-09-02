@@ -1,7 +1,7 @@
 <?php
 
 /* include the file needed for the dynamic elements of the 'Recent Issues' page */
-require_once( get_template_directory() . '/recent-issues-ajax.php' ); 
+require_once( get_template_directory() . '/recent-issues-functions.php' ); 
 
 	add_action( 'after_setup_theme', 'blankslate_setup' );
 	function blankslate_setup(){
